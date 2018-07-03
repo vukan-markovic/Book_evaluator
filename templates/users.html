@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Users
+{% endblock %}
+
+{% block main %}
+    {% for user in users %}
+        {% if not user.email == "vukan.markovic97@gmail.com" %}
+            <div class="card text-white mb-3 flex-container bg-success text box">
+                <div class="card-header flex-item">
+                    <a title="See profile" href="{{ url_for('user', username = user.username) }}">{{ user.username }}</a>
+                </div>
+                <div class="card-body flex-item">
+                    <img width="30%" height="30%" src="{{ user.profilePicture }}" alt="{{ user.username}} " title="{{ user.username }}"/>
+                    <h4 class="card-title flex-item">{{ user.firstName }}</h4>
+                    <h4 class="card-title flex-item">{{ user.lastName }}</h4>
+                    <h4 class="card-title flex-item">{{ user.email }}</h4>
+                    <p class="card-text flex-item">
+                        <button class="card-link btn btn-sm btn-danger">
+                            <a title="Delete user and all his data" href="{{ url_for('deleteUser', user_id = user.id) }}">Delete user</a>
+                        </button>
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  User
+{% endblock %}
+
+{% block main %}
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron center">
+        <div><span class="text-warning">{{ user.username }}</span></div><br>
+        <img id="profilePicture" width="30%" height="50%" src="{{ user.profilePicture }}" alt="Profile picture" title="Profile picture">
+        <br><br><div><span class="text-info">{{ user.firstName }}</span></div>
+        <div><span class="text-danger">{{ user.lastName }}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="centerContent">
+    <div class="row">
+      <div class="col-sm-12">
+        <br><h2 id="profile">Diary of readed books:</h2>
+          {% for book in books %}
+            <span class="badge badge-danger fontSize">
+              <a title="See book details" href="{{ url_for('bookDetails', book_id = book.id) }}">{{ book.volumeInfo.title[:40] }}</a>
+            </span>
+          {% endfor %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <br><h2 id="profile">Comments:</h2>
+        {% for comment in comments %}
+          <div class="card text-white mb-3 flex-container bg-warning comment text">
+              <div class="card-header flex-item">
+                <span class="badge badge-success fontSize">
+                  <a title="See book details" href="{{ url_for('bookDetails', book_id = comment.book.id) }}">
+                     {{ comment.book.volumeInfo.title }}
+                  </a>
+                </span>
+                <div class="card-body flex-item">
+                  <h4 class="card-title flex-item">{{ comment.dateOfPublish }}</h4>
+                  <p class="card-text flex-item indent">{{ comment.comment }}</p>
+                </div>
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <br><h2 id="profile">Grades:</h2>
+        {% for grade in grades %}
+          <p>
+              <span class="badge badge-danger fontSize">{{ grade.grade }}</span>&nbsp
+              <span class="badge badge-info fontSize">
+                <a title="See book details" href="{{ url_for('bookDetails', book_id = grade.book.id) }}">
+                   {{ grade.book.volumeInfo.title[:40] }}
+                </a>
+              </span>
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <br><h2 id="profile">Posts:</h2>
+        {% for post in posts %}
+          <p>
+            <span class="badge badge-danger fontSize">
+              <a title="See post" href="{{ url_for('postDetails', post_id = post.id) }}">{{ post.title[:40] }}</a>
+            </span>
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron center">
+        <h1 class="display-3">Welcome to CS50 Book evaluator!</h1>
+        <p class="lead">This is a site where you can comment, grade and read your favourite books</p>
+        <hr class="my-4">
+        <p>Also search for titles that you interested and see comments and grades from others users</p>
+        <p class="lead">
+            <span class="badge badge-primary">Add books which you readed to your diary</span>
+        </p>
+    </div>
+    {% for book in books["items"] %}
+        <div id="book" class="card text-white bg-danger mb-3">
+            <div class="card-header text">
+                <a title="See book details" href="{{ url_for('bookDetails', book_id=book.id) }}">{{ book.volumeInfo.title }}
+                </a>
+            </div>
+            <div class="card-body">
+                {% if book.volumeInfo.imageLinks %}
+                    <img id="bookImage" src="{{ book.volumeInfo.imageLinks.smallThumbnail }}"
+                         title="{{ book.volumeInfo.title }}" alt="{{ book.volumeInfo.title }}"/>
+                {% else %}
+                    <img width="60%" height="70%" src="../static/default-book-cover.jpg" title="{{ book.volumeInfo.title }}"
+                         alt="{{ book.volumeInfo.title }}"/>
+                {% endif %}
+                <h4 class="card-title"></h4>
+                <p class="card-text">
+                    {% if book.volumeInfo.authors %}
+                        {% for author in book.volumeInfo.authors[:3] %}
+                            <span class="badge badge-primary text">{{ author[:24] }}&nbsp</span>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

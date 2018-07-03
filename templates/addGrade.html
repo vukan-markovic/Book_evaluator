@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Add a grade
+{% endblock %}
+
+{% block main %}<br><br><br><br>
+  <form role="form" class="centerContent" action="{{ url_for('addGrade', book_id = book_id) }}" method="post">
+    <fieldset>
+      <legend>Add a grade</legend>
+      <div class="form-group">
+        <label for="grade">Grade for the book:</label>
+        <input id="grade" name="grade" class="form-control" placeholder="Enter the grade for the book" type="number" required min="0"
+               max="10">
+      </div>
+      <button class="btn btn-lg btn-success centerContent" type="submit">Grade</button>
+    </fieldset>
+  </form>
+{% endblock %}

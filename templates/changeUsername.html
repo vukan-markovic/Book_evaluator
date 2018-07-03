@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change username
+{% endblock %}
+
+{% block main %}<br><br><br><br>
+    <form role="form" class="centerContent" action="{{ url_for('changeUsername') }}" method="post">
+        <fieldset>
+            <legend>Change username</legend>
+            <div class="form-group">
+                <label for="newUsername">New username:</label>
+                <input class="form-control" id="newUsername" name="newUsername" placeholder="Enter new username" type="text" required/>
+                <small>Can contain only alphabets, numbers, . and _ and from 2 to 20 characters</small>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-warning btn-lg centerContent" type="submit">Change</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search results
+{% endblock %}
+
+{% block main %}
+    {% for book in books["items"] %}
+        <div id="book" class="card text-white bg-warning mb-3">
+            <div class="card-header">
+                <a title="See book details" class="text" href="{{ url_for('bookDetails', book_id=book.id) }}">
+                   {{ book.volumeInfo.title }}
+                </a>
+            </div>
+            <div class="card-body">
+                {% if book.volumeInfo.imageLinks %}
+                    <img id="bookImage" src="{{ book.volumeInfo.imageLinks.smallThumbnail }}"
+                         title="{{ book.volumeInfo.title }}" alt="{{ book.volumeInfo.title }}"/>
+                {% else %}
+                    <img width="60%" height="70%" src="../static/default-book-cover.jpg"
+                         title="{{ book.volumeInfo.title }}" alt="{{ book.volumeInfo.title }}"/>
+                {% endif %}
+                <h4 class="card-title"></h4>
+                <p class="card-text">
+                    {% if book.volumeInfo.authors %}
+                        {% for author in book.volumeInfo.authors[:3] %}
+                            <span id="author" class="badge badge-primary text">{{ author[:24] }}&nbsp</span>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

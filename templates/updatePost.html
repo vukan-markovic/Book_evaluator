@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Update post
+{% endblock %}
+
+{% block main %}<br><br><br><br>
+  <form role="form" class="centerContent" action="{{ url_for('updatePost', post_id = post.id) }}" method="post">
+    <fieldset>
+      <legend>Update post</legend>
+      <div class="form-group">
+        <label for="updatedTitle">Title:</label>
+        <input id="updatedTitle" name="updatedTitle" class="form-control" required type="text" value="{{ post.title }}"/>
+      </div>
+      <div>
+        <label for="updatedContent">Content:</label>
+        <textarea id="updatedContent" name="updatedContent" class="form-control" rows="14" maxlength="400" required>{{ post.content }}
+        </textarea>
+      </div>
+      <br><button class="btn btn-lg btn-warning centerContent" type="submit">Update</button>
+    </fieldset>
+  </form>
+{% endblock %}

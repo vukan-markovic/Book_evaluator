@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Profile
+{% endblock %}
+
+{% block main %}
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron center">
+        <div><span class="text-warning">{{ user.username }}</span></div><br>
+        <img id="profilePicture" width="30%" height="50%" src="{{ user.profilePicture }}" alt="Profile picture" title="Profile picture">
+        <br><br><div class="btn-group-vertical">
+          <button class="btn btn-info btn-sm btn-block centerContent">
+            <a title="Change profile picture" href="{{ url_for('changeProfilePicture') }}">Change profile picture</a>
+          </button>
+          <button class="btn btn-info btn-sm btn-block centerContent">
+            <a title ="Change username" href="{{ url_for('changeUsername') }}">Change username</a>
+          </button>
+          <button class="btn btn-info btn-sm btn-block centerContent">
+            <a title="Change password" href="{{ url_for('changePassword') }}">Change password</a>
+          </button>
+          <button class="btn btn-info btn-sm btn-block centerContent">
+            <a title="Change email" href="{{ url_for('changeEmail') }}">Change email</a>
+          </button>
+        </div>
+        <br><br><div><span class="text-info">{{ user.firstName }}</span></div>
+        <div><span class="text-danger">{{ user.lastName }}</span></div>
+        <div><span class="text-success">{{ user.email }}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="centerContent text">
+    <div class="row">
+      <div class="col-sm-12">
+        {% if books %}
+          <br><h3>Diary of readed books:</h3><br>
+        {% endif %}
+        {% for book in books %}
+          <p>
+            <span class="badge badge-warning fontSize">
+              <a title="See book details" href="{{ url_for('bookDetails', book_id = book.id) }}">{{ book.volumeInfo.title[:40] }}</a>
+            </span>&nbsp
+              <button class="card-link btn btn-sm btn-danger">
+                <a title="Delete book from diary" href="{{ url_for('deleteBook', book_id = book.id) }}">Delete book</a>
+              </button>
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        {% if comments %}
+          <br><h3>Comments:</h3><br>
+        {% endif %}
+        {% for comment in comments %}
+          <p>
+            <span class="badge badge-success fontSize">
+              <a title="See book details" title="{{ comment.book.volumeInfo.title }}"
+                href="{{ url_for('bookDetails', book_id = comment.book.id) }}">{{ comment.book.volumeInfo.title[:40] }}
+              </a>
+            </span>
+            <div class="btn-group">
+              <button class="card-link btn btn-sm btn-warning">
+                <a title="Update comment" href="{{ url_for('updateComment', comment_id = comment.id) }}">Update comment</a>
+              </button>&nbsp
+              <button class="card-link btn btn-sm btn-danger">
+                <a title="Delete comment" href="{{ url_for('deleteComment', comment_id = comment.id) }}">Delete comment</a>
+              </button>
+            </div>
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        {% if grades %}
+          <br><h3>Grades:</h3><br>
+        {% endif %}
+        {% for grade in grades %}
+          <p>
+            <span class="badge badge-success fontSize">{{ grade.grade }}</span>&nbsp
+            <span class="badge badge-info fontSize">
+              <a title="See book details" href="{{ url_for('bookDetails', book_id = grade.book.id) }}">
+                 {{ grade.book.volumeInfo.title[:40] }}
+              </a>
+            </span>
+            <div class="btn-group">
+              <button class="card-link btn btn-sm btn-warning">
+                <a title="Update grade" href="{{ url_for('updateGrade', grade_id = grade.id) }}">Update grade</a>
+              </button>
+              &nbsp<button class="card-link btn btn-sm btn-danger">
+                <a title="Delete grade" href="{{ url_for('deleteGrade', grade_id = grade.id) }}">Delete grade</a>
+              </button>
+            </div>
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        {% if posts %}
+          <br><h3>Posts:</h3><br>
+        {% endif %}
+        {% for post in posts %}
+          <p>
+            <span class="badge badge-primary fontSize">
+              <a title="See post" href="{{ url_for('postDetails', post_id = post.id) }}">{{ post.title[:20] }}</a>
+            </span>
+            <div class="btn-group">
+              <button class="card-link btn btn-sm btn-warning">
+                <a title="Update post" href="{{ url_for('updatePost', post_id = post.id) }}">Update post</a>
+              </button>
+              &nbsp<button class="card-link btn btn-sm btn-danger">
+                <a title="Delete post" href="{{ url_for('deletePost', post_id = post.id) }}">Delete post</a>
+              </button>
+            </div>
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

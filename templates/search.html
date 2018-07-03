@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}<br><br><br><br>
+    <form role="form" class="centerContent" action="{{ url_for('search') }}" method="post">
+        <fieldset>
+            <legend>Search</legend>
+            <div class="form-group">
+                <label for="title">Book title:</label>
+                <input autocomplete="on" autofocus class="form-control" placeholder="Enter the title of the book" id="title"
+                       name="title" type="text" required/>
+            </div>
+            <div class="form-group">
+                <label for="author">Book author (optional):</label>
+                <input autocomplete="on" class="form-control" placeholder="Enter the author of the book" id="author" name="author"
+                       type="text"/>
+            </div>
+            <div class="form-group">
+                <label for="publisher">Book publisher (optional):</label>
+                <input autocomplete="on" class="form-control" placeholder="Enter the book publisher" id="publisher" name="publisher"
+                       type="text"/>
+            </div>
+        </fieldset>
+        <br><button class="btn btn-lg btn-info centerContent" type="submit">Search</button>
+    </form>
+{% endblock %}

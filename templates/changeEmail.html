@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change email
+{% endblock %}
+
+{% block main %}<br><br><br><br>
+    <form role="form" class="centerContent" action="{{ url_for('changeEmail') }}" method="post">
+        <fieldset>
+        <legend>Change email</legend>
+            <div class="form-group">
+                <label for="newEmail">New email:</label>
+                <input class="form-control" id="newEmail" name="newEmail" placeholder="Enter new email" type="email" required/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-warning btn-lg centerContent" type="submit">Change</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}<br>
+    <form role="form" class="centerContent" action="{{ url_for('register') }}" method="post">
+        <fieldset>
+            <legend>Register</legend>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input autocomplete="on" autofocus class="form-control" id="username" name="username" placeholder="Enter username"
+                       type="text" required />
+                <small>Can contain only alphabets, numbers, . and _ and from 2 to 20 characters</small>
+            </div>
+             <div class="form-group">
+                 <label for="firstName">First name:</label>
+                <input autocomplete="on" class="form-control" id="fistName" name="firstName" placeholder="Enter first name"
+                       type="text" required />
+                <small>Can contain only alphabets and from 2 to 20 characters</small>
+            </div>
+             <div class="form-group">
+                 <label for="lastName">Last name:</label>
+                <input autocomplete="on" class="form-control" id="lastname" name="lastName" placeholder="Enter last name"
+                       type="text" required/>
+                <small>Can contain only alphabets and from 2 to 20 characters</small>
+            </div>
+             <div class="form-group">
+                <label for="email">Email:</label>
+                <input autocomplete="on" class="form-control" id="email" name="email" placeholder="Enter email" type="email"
+                       required/>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input autocomplete="off" class="form-control" id="password" name="password" placeholder="Password" type="password"
+                       required/>
+                <small>Must contain at least one number, one uppercase and lowercase letter and at least 8 or more characters</small>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm password:</label>
+                <input autocomplete="off" class="form-control" id="confirmPassword" name="confirmPassword"
+                placeholder="Confirm password" type="password" required />
+            </div>
+            <div class="form-group">
+                <input style="cursor:pointer;background-color:tomato;color:white" type="reset" id="reset" name="reset"
+                       class="form-control"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

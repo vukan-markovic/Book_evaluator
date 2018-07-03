@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Book details
+{% endblock %}
+
+{% block main %}
+  <div class="card mb-3">
+    <h3 class="card-header">{{ book.volumeInfo.title }}</h3>
+    <div class="card-body">
+      {% if book.volumeInfo.subtitle %}
+        <h5 class="card-title">{{ book.volumeInfo.subtitle }}</h5>
+      {% endif %}
+      {% if book.volumeInfo.pageCount %}
+        <h6 class="card-subtitle text-muted">Pages: {{ book.volumeInfo.pageCount }}</h6>
+      {% endif %}
+    </div><br>
+    {% if book.volumeInfo.imageLinks %}
+      <img id="imgDetails" src="{{ book.volumeInfo.imageLinks.smallThumbnail }}" title="{{ book.volumeInfo.title }}"
+           alt="{{ book.volumeInfo.title }}"/>
+    {% else %}
+      <img width="60%" height="70%" src="../static/default-book-cover.jpg" title="{{ book.volumeInfo.title }}"
+           alt="{{ book.volumeInfo.title }}"/>
+    {% endif %}
+    <div class="card-body">
+      <br><p class="card-text description">{{ book.volumeInfo.description }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      {% if book.volumeInfo.authors %}
+        &nbspAuthors:<br>
+        {% for author in book.volumeInfo.authors %}
+          <li class="list-group-item">{{ author }}</li><br>
+        {% endfor %}
+      {% endif %}
+    </ul>
+    <div class="card-body">
+      {% if book.volumeInfo.publisher %}
+        <span class="card-link">Publisher: {{ book.volumeInfo.publisher }}</span>
+      {% endif %}
+      {% if book.volumeInfo.publishDate %}
+        <span class="card-link">Published: {{ book.volumeInfo.publishedDate }}</span>
+      {% endif %}
+      {% if book.volumeInfo.categories %}
+        <br>Categories:
+        {% for category in book.volumeInfo.categories %}
+          <span class="card-link">{{ category }}</span>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="card-footer text-muted">
+      Average grade: {{ averageGrade }}<br>
+      Number of readings: {{ numberOfReadings }}
+    </div>
+  </div>
+  {% if session.user_id %}
+    {% if not readed %}
+      <form id="inlineForm" action="{{ url_for('addBook', book_id = book.id) }}" method="post">
+        <button class="card-link btn btn-md btn-info" type="submit">Add to diary</button>
+      </form>&nbsp&nbsp
+    {% endif %}
+    <div class="centerContent">
+      {% if book.volumeInfo.industryIdentifiers %}
+        <script type="text/javascript" src="//books.google.com/books/previewlib.js"></script>
+        <script type="text/javascript">
+          GBS_insertPreviewButtonPopup('ISBN:{{ book.volumeInfo.industryIdentifiers[0].identifier }}');
+        </script>
+      {% endif %}
+      <p></p>
+    </div>
+    <button class="card-link btn btn-md btn-success">
+      <a title="Add comment" href="{{ url_for('addComment', book_id = book.id) }}">Add comment</a>
+    </button>
+    {% if not graded %}
+      <button class="card-link btn btn-md btn-primary">
+        <a title="Add grade" href="{{ url_for('addGrade', book_id = book.id) }}">Add grade</a>
+      </button><br><br>
+    {% endif %}
+  {% endif %}
+  {% if comments %}
+    <br><br><h3 class="centerContent">Comments:</h3><br><br>
+  {% endif %}
+  {% for comment in comments %}
+    <div class="card text-white mb-3 flex-container bg-warning comment">
+      <div class="card-header flex-item">
+        {% if comment.user_id != session.user_id %}
+          <span class="badge badge-success">
+            <a title="See profile" href="{{ url_for('user', username = comment.username) }}">By: {{ comment.username }}</a>
+          </span>
+        {% endif %}
+      </div>
+      <div class="card-body flex-item">
+        <h6 class="card-title flex-item">Published: {{ comment.dateOfPublish }}</h6>&nbsp
+        {% if session.email or session.user_id == comment.user_id %}
+         <button class="card-link btn btn-sm btn-info">
+            <a title="Update comment" href="{{ url_for('updateComment', comment_id = comment.id) }}">Update comment</a>
+          </button>
+          <button class="card-link btn btn-sm btn-danger">
+            <a title="Delete comment" href="{{ url_for('deleteComment', comment_id = comment.id) }}">Delete comment</a>
+          </button>&nbsp
+        {% endif %}
+      </div>
+      <p class="card-text flex-item indent">{{ comment.comment }}</p>
+    </div>
+  {% endfor %}
+  {% if grades %}
+    <br><br><h3 class="centerContent">Grades:</h3><br><br>
+  {% endif %}
+  {% for grade in grades %}
+    <div class="card text-white mb-3 flex-container bg-success centerContent center">
+      <div class="card-header flex-item">
+        {% if grade.user_id != session.user_id %}
+          <span class="badge badge-success">
+            <a title="See profile" href="{{ url_for('user', username = grade.username) }}">By: {{ grade.username }}</a>
+          </span>
+        {% endif %}
+      </div>
+      <div class="card-body flex-item">
+        <h4 class="card-title flex-item">{{ grade.grade }}</h4>
+        <p class="card-text flex-item ">Graded: {{ grade.dateOfEvaluation }}</p>
+      </div>
+      <p></p>
+    </div>
+  {% endfor %}
+  <script>
+    // ensure that description of book is interpreted like html
+    $(document).ready(function() {
+      $(".description").html($(".description").text());
+    });
+  </script>
+{% endblock %}

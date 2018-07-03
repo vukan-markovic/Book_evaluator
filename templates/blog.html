@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Blog
+{% endblock %}
+
+{% block main %}
+  <div class="jumbotron center">
+    <h1 class="display-3">Welcome to our blog!</h1>
+    <p class="lead">Here people interested in literature exchange their stories</p>
+    <hr class="my-4">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <p>Share your story with us! Publish a new post and take part at our blog!</p>
+        {% if session.user_id %}
+          <button class="btn btn-primary btn-lg centerContent">
+            <a title="Post" href="{{ url_for('publish') }}">Post</a>
+          </button>
+        {% endif %}
+        {% if not session.user_id %}
+          <p>Must be registered to take part at the blog and published!</p>
+          <button class="btn btn-primary btn-lg centerContent">
+            <a title="Register" href="{{ url_for('register') }}">Register</a>
+          </button>
+        {% endif %}
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-sm-12">
+      {% for post in posts %}
+        <div class="card text-white mb-3 flex-container bg-success box">
+          <div class="card-header flex-item text">
+            <a title="See post" href="{{ url_for('postDetails', post_id = post.id) }}">{{ post.title }}</a>
+          </div>
+          <div class="card-body flex-item">
+            <h4 class="card-title flex-item">By: {{ post.username }}</h4>
+            <p class="card-text flex-item">Published: {{ post.dateOfPublish }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

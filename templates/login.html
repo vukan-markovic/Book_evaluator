@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}<br><br><br><br>
+    <form role="form" class="centerContent" action="{{ url_for('login') }}" method="post">
+        <fieldset>
+        <legend>Log in</legend>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input autocomplete="on" autofocus class="form-control" name="email" placeholder="Enter email" type="email" required/>
+            </div>
+            <div class="form-group">
+                <label for="email">Password:</label>
+                <input autocomplete="off" class="form-control" id="password" name="password" placeholder="Enter password"
+                       type="password" required/>
+            </div>
+            <div class="form-group">
+                <input style="cursor:pointer;background-color:tomato;color:white" type="reset" id="reset" name="reset" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-info btn-lg btn-block" type="submit">Log In</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}
