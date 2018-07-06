@@ -1,16 +1,23 @@
 /* main style for the app */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
     padding-bottom: 4px;
     margin-bottom: 4px;
     font-family: 'EB Garamond';
     background: url(background.png) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
     font-size: 18px;
     color: #008B8B;
+    width:100%;
+    max-width:100%;
+    height:auto;
 }
 
 ul {
@@ -102,6 +109,10 @@ input[type]:focus {
 
 .textWhite {
     color: white;
+}
+
+.title {
+    font-size:10vw;   
 }
 
 .route:hover, .brand:hover, .btn:hover {
