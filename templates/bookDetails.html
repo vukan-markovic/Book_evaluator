@@ -66,14 +66,12 @@
         <a title="Add grade" href="{{ url_for('addGrade', book_id = book.id) }}">Add grade</a>
       </button>&nbsp;&nbsp;
     {% endif %}
-    <div>
-      {% if book.volumeInfo.industryIdentifiers %}
-        <script type="text/javascript" src="//books.google.com/books/previewlib.js"></script>
-        <script type="text/javascript">
-          GBS_insertPreviewButtonPopup('ISBN:{{ book.volumeInfo.industryIdentifiers[0].identifier }}');
-        </script>
-      {% endif %}
-    </div>
+    {% if book.volumeInfo.industryIdentifiers %}
+      <script type="text/javascript" src="//books.google.com/books/previewlib.js"></script>
+      <script type="text/javascript">
+        GBS_insertPreviewButtonPopup('ISBN:{{ book.volumeInfo.industryIdentifiers[0].identifier }}');
+      </script>
+    {% endif %}
   {% endif %}
   {% if comments %}
     <br><br><h3 class="centerContent">Comments:</h3><br><br>
