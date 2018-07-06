@@ -51,7 +51,7 @@
         <br><h2 id="profile">Grades:</h2>
         {% for grade in grades %}
           <p>
-              <span class="badge badge-danger fontSize">{{ grade.grade }}</span>&nbsp
+              <span class="badge badge-danger fontSize">{{ grade.grade }}</span>&nbsp;
               <span class="badge badge-info fontSize">
                 <a title="See book details" href="{{ url_for('bookDetails', book_id = grade.book.id) }}">
                    {{ grade.book.volumeInfo.title[:40] }}
