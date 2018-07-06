@@ -27,8 +27,9 @@ if app.config["DEBUG"]:
 
 # configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
-app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
+app.config["PERMANENT_SESSION_LIFETIME"] = 10800
 Session(app)
        
 # configure parameters for sending welcome email to users after registration
@@ -945,7 +946,3 @@ def page_not_found(e):
 
     # return rendered pageNotFound.html page
     return render_template("pageNotFound.html")
-
-if __name__ == '__main__':
-    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-    app.run()
