@@ -64,7 +64,7 @@
     {% if not graded %}
       <button class="card-link btn btn-md btn-primary">
         <a title="Add grade" href="{{ url_for('addGrade', book_id = book.id) }}">Add grade</a>
-      </button>&nbsp;&nbsp;
+      </button>&nbsp;&nbsp;&nbsp;&nbsp;
     {% endif %}
     {% if book.volumeInfo.industryIdentifiers %}
       <script type="text/javascript" src="//books.google.com/books/previewlib.js"></script>
