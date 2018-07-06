@@ -4,7 +4,6 @@ from flask import Flask, flash, redirect, render_template, request, session, url
 from flask_mail import Mail, Message
 from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
-from tempfile import mkdtemp
 from helpers import *
 import datetime
 import requests
@@ -15,6 +14,8 @@ import os
 # configure application
 app = Flask(__name__)
 mail = Mail(app)
+
+# set the secret key to use sessions
 app.secret_key = os.urandom(24)
 
 # ensure responses aren't cached
@@ -27,7 +28,6 @@ if app.config["DEBUG"]:
         return response
 
 # configure session to use filesystem (instead of signed cookies)
-# app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["PERMANENT_SESSION_LIFETIME"] = 10800
@@ -562,6 +562,7 @@ def deleteBook(book_id):
 
 # register route
 @app.route("/register", methods = ["GET", "POST"])
+@logged
 def register():
 
     # if user reached route via POST (as by submitting a form via POST)
@@ -658,10 +659,11 @@ def register():
 
 # login route
 @app.route("/login", methods = ["GET", "POST"])
+@logged
 def login():
 
     # forget any user_id
-    # session.clear()
+    session.clear()
 
     # if user reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
@@ -710,7 +712,7 @@ def login():
 def logout():
 
     # forget any user_id
-    session.pop('user_id', None)
+    session.clear()
 
     # display flash message
     flash("Logged out!")
