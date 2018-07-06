@@ -30,8 +30,7 @@ app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-    
-"""    
+       
 # configure parameters for sending welcome email to users after registration
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
@@ -40,7 +39,6 @@ app.config['MAIL_PASSWORD'] = 'book123!'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
-"""
 
 # configure CS50 Library to use SQLite database
 database = SQL("sqlite:///bookEvaluator.db")
@@ -634,14 +632,14 @@ def register():
         send user welcome email after registration
         define title of the email, sender and recipients
         """
-        #msg = Message('Thank you for registration', sender = 'booktadingclub@gmail.com', recipients = [request.form.get("email")])
+        msg = Message('Thank you for registration', sender = 'booktadingclub@gmail.com', recipients = [request.form.get("email")])
         
         # define content of the email
-        #msg.body = """Hello and thank you for join us! We hope you enjoy at our site where you can search, read, comment and grade
-        #your favourite books. Have fun!"""
+        msg.body = """Hello and thank you for join us! We hope you enjoy at our site where you can search, read, comment and grade
+        your favourite books. Have fun!"""
         
         # send email
-        #mail.send(msg)
+        mail.send(msg)
         
         # redirect user to home page
         return redirect(url_for("index"))
