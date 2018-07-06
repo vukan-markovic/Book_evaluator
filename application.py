@@ -3,6 +3,7 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_mail import Mail, Message
 from flask_session import Session
+from flask_sslify import SSLify
 from passlib.apps import custom_app_context as pwd_context
 from helpers import *
 import datetime
