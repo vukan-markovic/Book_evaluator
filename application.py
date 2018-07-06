@@ -14,7 +14,7 @@ import re
 # configure application
 app = Flask(__name__)
 mail = Mail(app)
-app.secret_key = 'dksoqidldispaosdcizckdis'
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 # ensure responses aren't cached
 if app.config["DEBUG"]:
@@ -656,7 +656,7 @@ def register():
 def login():
 
     # forget any user_id
-    session.clear()
+    # session.clear()
 
     # if user reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
@@ -705,7 +705,7 @@ def login():
 def logout():
 
     # forget any user_id
-    session.clear()
+    session.pop('user_id', None)
 
     # display flash message
     flash("Logged out!")
@@ -945,3 +945,7 @@ def page_not_found(e):
 
     # return rendered pageNotFound.html page
     return render_template("pageNotFound.html")
+
+if __name__ == '__main__':
+    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+    app.run()
