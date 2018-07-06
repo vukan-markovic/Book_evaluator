@@ -146,3 +146,7 @@ input[type]:focus {
 #inlineForm {
     display: inline;
 }
+
+@-ms-viewport{
+  width: device-width;
+}
