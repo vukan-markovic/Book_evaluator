@@ -7,6 +7,7 @@ from flask_sessionstore import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
 from helpers import *
+from redis import Redis
 import datetime
 import requests
 import random
