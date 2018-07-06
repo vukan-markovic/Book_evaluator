@@ -27,10 +27,13 @@ if app.config["DEBUG"]:
         return response
 
 # configure session to use filesystem (instead of signed cookies)
-app.config["SESSION_FILE_DIR"] = mkdtemp()
+# app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["PERMANENT_SESSION_LIFETIME"] = 10800
+app.config["SESSION_COOKIE_HTTPONLY"] = False
+app.config["SESSION_COOKIE_SECURE"] = True
+app.config["SESSION_FILE_THRESHOLD"]= 2
 Session(app)
        
 # configure parameters for sending welcome email to users after registration
