@@ -121,6 +121,7 @@ input[type]:focus {
 
 .formMargin {
   margin-top: 10%;
+  background-size: auto 100%;
 }
 
 #book {
