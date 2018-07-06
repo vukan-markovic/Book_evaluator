@@ -633,15 +633,15 @@ def register():
         """
         send user welcome email after registration
         define title of the email, sender and recipients
-        msg = Message('Thank you for registration', sender = 'booktadingclub@gmail.com', recipients = [request.form.get("email")])
-
-        # define content of the email
-        msg.body = """Hello and thank you for join us! We hope you enjoy at our site where you can search, read, comment and grade
-        your favourite books. Have fun!"""
-
-        # send email
-        mail.send(msg)
         """
+        #msg = Message('Thank you for registration', sender = 'booktadingclub@gmail.com', recipients = [request.form.get("email")])
+        
+        # define content of the email
+        #msg.body = """Hello and thank you for join us! We hope you enjoy at our site where you can search, read, comment and grade
+        #your favourite books. Have fun!"""
+        
+        # send email
+        #mail.send(msg)
         
         # redirect user to home page
         return redirect(url_for("index"))
