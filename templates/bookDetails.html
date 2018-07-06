@@ -58,23 +58,22 @@
         <button class="card-link btn btn-md btn-info" type="submit">Add to diary</button>
       </form>&nbsp;&nbsp;
     {% endif %}
-    <div class="centerContent">
+    <button class="card-link btn btn-md btn-success">
+      <a title="Add comment" href="{{ url_for('addComment', book_id = book.id) }}">Add comment</a>
+    </button>&nbsp;&nbsp;
+    {% if not graded %}
+      <button class="card-link btn btn-md btn-primary">
+        <a title="Add grade" href="{{ url_for('addGrade', book_id = book.id) }}">Add grade</a>
+      </button>&nbsp;&nbsp;
+    {% endif %}
+    <div>
       {% if book.volumeInfo.industryIdentifiers %}
         <script type="text/javascript" src="//books.google.com/books/previewlib.js"></script>
         <script type="text/javascript">
           GBS_insertPreviewButtonPopup('ISBN:{{ book.volumeInfo.industryIdentifiers[0].identifier }}');
         </script>
       {% endif %}
-      <p></p>
     </div>
-    <button class="card-link btn btn-md btn-success">
-      <a title="Add comment" href="{{ url_for('addComment', book_id = book.id) }}">Add comment</a>
-    </button>
-    {% if not graded %}
-      <button class="card-link btn btn-md btn-primary">
-        <a title="Add grade" href="{{ url_for('addGrade', book_id = book.id) }}">Add grade</a>
-      </button><br><br>
-    {% endif %}
   {% endif %}
   {% if comments %}
     <br><br><h3 class="centerContent">Comments:</h3><br><br>
