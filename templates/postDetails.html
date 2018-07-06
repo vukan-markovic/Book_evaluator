@@ -19,11 +19,11 @@
         By:</span>{{ user.username }}
       </div>
       <div class="card-footer">
-        Published: {{ post.dateOfPublish }}&nbsp
+        Published: {{ post.dateOfPublish }}&nbsp;
         {% if session.email or session.user_id == post.user_id %}
           <button class="card-link btn btn-sm btn-success">
             <a title="Delete post" href="{{ url_for('deletePost', post_id = post.id) }}">Delete post</a>
-          </button>&nbsp
+          </button>&nbsp;
           <button class="card-link btn btn-sm btn-success">
             <a title="Update post" href="{{ url_for('updatePost', post_id = post.id) }}">Update post</a>
           </button>
