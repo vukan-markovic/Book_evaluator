@@ -32,3 +32,17 @@ Sources:
 - https://bootswatch.com/minty
 
 Installing all necessary startup packages in the CS50 environment by executing the command: pip3 install --user -r requirements.txt.
+
+To run locally:
+- install git
+- git clone
+- install python  
+- install python3 
+- install virtualenv
+- virtualenv -p python3 venv
+- source venv/bin/activate 
+- pip install -r requirements.txt
+- export FLASK_APP=application.py 
+- export FLASK_DEBUG=1 
+- flask run
+App is running on http://127.0.0.1:5000.
