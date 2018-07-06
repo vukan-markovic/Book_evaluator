@@ -89,14 +89,14 @@
         {% endif %}
       </div>
       <div class="card-body flex-item">
-        <h6 class="card-title flex-item">Published: {{ comment.dateOfPublish }}</h6>&nbsp
+        <h6 class="card-title flex-item">Published: {{ comment.dateOfPublish }}</h6>&nbsp;
         {% if session.email or session.user_id == comment.user_id %}
          <button class="card-link btn btn-sm btn-info">
             <a title="Update comment" href="{{ url_for('updateComment', comment_id = comment.id) }}">Update comment</a>
           </button>
           <button class="card-link btn btn-sm btn-danger">
             <a title="Delete comment" href="{{ url_for('deleteComment', comment_id = comment.id) }}">Delete comment</a>
-          </button>&nbsp
+          </button>&nbsp;
         {% endif %}
       </div>
       <p class="card-text flex-item indent">{{ comment.comment }}</p>
