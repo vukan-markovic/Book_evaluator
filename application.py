@@ -3,11 +3,9 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_mail import Mail, Message
 from flask_session import Session
-from flask_sessionstore import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
 from helpers import *
-from redis import Redis
 import datetime
 import requests
 import random
@@ -16,6 +14,7 @@ import re
 # configure application
 app = Flask(__name__)
 mail = Mail(app)
+app.secret_key = 'dksoqidldispaosdcizckdis'
 
 # ensure responses aren't cached
 if app.config["DEBUG"]:
@@ -26,16 +25,10 @@ if app.config["DEBUG"]:
         response.headers["Pragma"] = "no-cache"
         return response
 
-    """
 # configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
-"""
-
-SESSION_TYPE = 'redis'
-app.config.from_object(__name__)
 Session(app)
 
 # configure parameters for sending welcome email to users after registration
