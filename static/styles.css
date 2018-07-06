@@ -5,14 +5,6 @@ body {
     margin-bottom: 4px;
     font-family: 'EB Garamond';
     background: url(background.png) no-repeat center center fixed;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    min-width: 100%;
-    min-height: 100%;
-    height: 100%; 
-    width: 100%;
-    height: auto;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -100,10 +92,6 @@ input[type]:focus {
      overflow: hidden;
      text-overflow: ellipsis;
      font-size: 16px;
-}
-
-.text:hover {
-    overflow:visible;
 }
 
 .box {
