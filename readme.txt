@@ -1,4 +1,5 @@
 Link sajta: https://book-evaluator.herokuapp.com/
+
 Kod: https://github.com/Vukan-Markovic/Book-evaluator
 
 Tema za projekat: Web aplikacija za ocenjivanje, komentarisanje, čitanje i pretragu knjiga sa podržanom autentifikacijom.
