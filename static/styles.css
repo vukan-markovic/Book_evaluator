@@ -66,10 +66,6 @@ input[type]:focus {
     background-color: lightblue;
 }
 
-main img {
-    max-width: 100%;
-}
-
 .comment {
     width: 100%;
 }
