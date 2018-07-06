@@ -6,8 +6,6 @@ from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
 from helpers import *
-from localStorage import *
-from selenium import webdriver
 import datetime
 import requests
 import random
@@ -18,11 +16,6 @@ app = Flask(__name__)
 mail = Mail(app)
 app.secret_key = 'dksoqidldispaosdcizckdis'
 
-driver = webdriver.Firefox()
-
-# get the local storage
-session = LocalStorage(driver)
-
 # ensure responses aren't cached
 if app.config["DEBUG"]:
     @app.after_request
@@ -32,14 +25,13 @@ if app.config["DEBUG"]:
         response.headers["Pragma"] = "no-cache"
         return response
 
-    """
 # configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-"""
     
+"""    
 # configure parameters for sending welcome email to users after registration
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
@@ -48,6 +40,7 @@ app.config['MAIL_PASSWORD'] = 'book123!'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
+"""
 
 # configure CS50 Library to use SQLite database
 database = SQL("sqlite:///bookEvaluator.db")
@@ -640,7 +633,6 @@ def register():
         """
         send user welcome email after registration
         define title of the email, sender and recipients
-        """
         msg = Message('Thank you for registration', sender = 'booktadingclub@gmail.com', recipients = [request.form.get("email")])
 
         # define content of the email
@@ -649,7 +641,8 @@ def register():
 
         # send email
         mail.send(msg)
-
+        """
+        
         # redirect user to home page
         return redirect(url_for("index"))
 
