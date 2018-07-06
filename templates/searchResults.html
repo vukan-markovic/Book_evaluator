@@ -7,7 +7,7 @@
 {% block main %}
     {% for book in books["items"] %}
         <div id="book" class="card text-white bg-warning mb-3">
-            <div class="card-header">
+            <div class="card-header text">
                 <a title="See book details" class="text" href="{{ url_for('bookDetails', book_id=book.id) }}">
                    {{ book.volumeInfo.title }}
                 </a>
