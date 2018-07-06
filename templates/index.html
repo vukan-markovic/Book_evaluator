@@ -32,7 +32,7 @@
                 <p class="card-text">
                     {% if book.volumeInfo.authors %}
                         {% for author in book.volumeInfo.authors[:3] %}
-                            <span class="badge badge-primary text">{{ author[:24] }}&nbsp</span>
+                            <span class="badge badge-primary text">{{ author[:24] }}&nbsp;</span>
                         {% endfor %}
                     {% endif %}
                 </p>
