@@ -40,7 +40,7 @@
           <p>
             <span class="badge badge-warning fontSize">
               <a title="See book details" href="{{ url_for('bookDetails', book_id = book.id) }}">{{ book.volumeInfo.title[:40] }}</a>
-            </span>&nbsp
+            </span>&nbsp;
               <button class="card-link btn btn-sm btn-danger">
                 <a title="Delete book from diary" href="{{ url_for('deleteBook', book_id = book.id) }}">Delete book</a>
               </button>
@@ -63,7 +63,7 @@
             <div class="btn-group">
               <button class="card-link btn btn-sm btn-warning">
                 <a title="Update comment" href="{{ url_for('updateComment', comment_id = comment.id) }}">Update comment</a>
-              </button>&nbsp
+              </button>&nbsp;
               <button class="card-link btn btn-sm btn-danger">
                 <a title="Delete comment" href="{{ url_for('deleteComment', comment_id = comment.id) }}">Delete comment</a>
               </button>
@@ -79,7 +79,7 @@
         {% endif %}
         {% for grade in grades %}
           <p>
-            <span class="badge badge-success fontSize">{{ grade.grade }}</span>&nbsp
+            <span class="badge badge-success fontSize">{{ grade.grade }}</span>&nbsp;
             <span class="badge badge-info fontSize">
               <a title="See book details" href="{{ url_for('bookDetails', book_id = grade.book.id) }}">
                  {{ grade.book.volumeInfo.title[:40] }}
@@ -89,7 +89,7 @@
               <button class="card-link btn btn-sm btn-warning">
                 <a title="Update grade" href="{{ url_for('updateGrade', grade_id = grade.id) }}">Update grade</a>
               </button>
-              &nbsp<button class="card-link btn btn-sm btn-danger">
+              &nbsp;<button class="card-link btn btn-sm btn-danger">
                 <a title="Delete grade" href="{{ url_for('deleteGrade', grade_id = grade.id) }}">Delete grade</a>
               </button>
             </div>
@@ -111,7 +111,7 @@
               <button class="card-link btn btn-sm btn-warning">
                 <a title="Update post" href="{{ url_for('updatePost', post_id = post.id) }}">Update post</a>
               </button>
-              &nbsp<button class="card-link btn btn-sm btn-danger">
+              &nbsp;<button class="card-link btn btn-sm btn-danger">
                 <a title="Delete post" href="{{ url_for('deletePost', post_id = post.id) }}">Delete post</a>
               </button>
             </div>
