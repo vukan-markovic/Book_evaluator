@@ -112,7 +112,7 @@ input[type]:focus {
 }
 
 .title {
-    font-size:9vw;   
+    font-size:8vw;   
 }
 
 .route:hover, .brand:hover, .btn:hover {
@@ -121,7 +121,8 @@ input[type]:focus {
 
 .formMargin {
   margin-top: 10%;
-  background-size: auto 100%;
+  background-size: 100% 100%;
+  background-repeat: repeat-y;
 }
 
 #book {
