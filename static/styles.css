@@ -107,6 +107,10 @@ main img {
      font-size: 16px;
 }
 
+.text:hover {
+    overflow:visible;
+}
+
 .box {
     float: left;
     width: 20rem;
@@ -119,6 +123,10 @@ main img {
 
 .route:hover, .brand:hover, .btn:hover {
     color: orange;
+}
+
+.title {
+    overflow: auto;   
 }
 
 #book {
