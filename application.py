@@ -6,6 +6,8 @@ from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
 from helpers import *
+from localStorage import *
+from selenium import webdriver
 import datetime
 import requests
 import random
@@ -16,6 +18,11 @@ app = Flask(__name__)
 mail = Mail(app)
 app.secret_key = 'dksoqidldispaosdcizckdis'
 
+driver = webdriver.Firefox()
+
+# get the local storage
+session = LocalStorage(driver)
+
 # ensure responses aren't cached
 if app.config["DEBUG"]:
     @app.after_request
@@ -25,12 +32,14 @@ if app.config["DEBUG"]:
         response.headers["Pragma"] = "no-cache"
         return response
 
+    """
 # configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-
+"""
+    
 # configure parameters for sending welcome email to users after registration
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
