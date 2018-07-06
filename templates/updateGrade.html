@@ -4,8 +4,8 @@
   Update grade
 {% endblock %}
 
-{% block main %}<br><br><br><br>
-  <form role="form" class="centerContent" action="{{ url_for('updateGrade', grade_id = grade.id) }}" method="post">
+{% block main %}
+  <form role="form" class="centerContent formMargin" action="{{ url_for('updateGrade', grade_id = grade.id) }}" method="post">
     <fieldset>
       <legend>Update grade</legend>
       <div class="form-group">
