@@ -24,7 +24,7 @@
                 <p class="card-text">
                     {% if book.volumeInfo.authors %}
                         {% for author in book.volumeInfo.authors[:3] %}
-                            <span id="author" class="badge badge-primary text">{{ author[:24] }}&nbsp</span>
+                            <span id="author" class="badge badge-primary text">{{ author[:24] }}&nbsp;</span>
                         {% endfor %}
                     {% endif %}
                 </p>
