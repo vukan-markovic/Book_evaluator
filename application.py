@@ -15,6 +15,10 @@ import os
 app = Flask(__name__)
 mail = Mail(app)
 
+# redirect all http requests to https for secure connections
+if 'DYNO' in os.environ:
+    sslify = SSLify(app)
+
 # set the secret key to use sessions
 app.secret_key = os.urandom(24)
 
