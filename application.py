@@ -10,11 +10,12 @@ import datetime
 import requests
 import random
 import re
+import os
 
 # configure application
 app = Flask(__name__)
 mail = Mail(app)
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.secret_key = os.urandom(24)
 
 # ensure responses aren't cached
 if app.config["DEBUG"]:
