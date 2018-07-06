@@ -19,7 +19,6 @@ body {
     background-size: cover;
     font-size: 18px;
     color: #008B8B;
-    overflow: hidden;
 }
 
 ul {
@@ -33,6 +32,7 @@ li {
 
 form {
     width: 30%;
+    height: 100%;
 }
 
 article {
@@ -122,10 +122,6 @@ input[type]:focus {
 
 .route:hover, .brand:hover, .btn:hover {
     color: orange;
-}
-
-.title {
-    overflow: auto;   
 }
 
 #book {
