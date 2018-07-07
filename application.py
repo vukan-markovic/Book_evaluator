@@ -876,7 +876,7 @@ def user(username):
 
     # get all books from Google Books API that user read and add them to list
     for book in books:
-        readedBooks.append(requests.get("https://www.googleapis.com/books/v1/volumes/" + book["book_id"]).json())
+        readedBooks.append(requests.get("https://www.googleapis.com/books/v1/volumes?q=" + book["book_id"]).json())
 
     # query database to get all user's comments to show them to another user
     comments = database.execute("SELECT * FROM comments WHERE user_id = :user_id", user_id = user[0]["id"])
@@ -887,7 +887,7 @@ def user(username):
     # get all books from Google Books API that user read and add them to list
     for comment in comments:
         usersComments.append({"id": comment["id"], "comment": comment["comment"], "dateOfPublish": comment["dateOfPublish"], "book":
-                              requests.get("https://www.googleapis.com/books/v1/volumes/" + comment["book_id"] +
+                              requests.get("https://www.googleapis.com/books/v1/volumes?q=" + comment["book_id"] +
                               "&key=AIzaSyBtprivgL2dXOf8kxsMHuELzvOAQn-2ZZM").json()})
 
     # query database to get all user's grades to show them to another user
@@ -899,7 +899,7 @@ def user(username):
     # get all books from Google Books API that user read and add them to list
     for grade in grades:
         usersGrades.append({"id": grade["id"], "grade": grade["grade"], "dateOfEvaluation": grade["dateOfEvaluation"], "book":
-                            requests.get("https://www.googleapis.com/books/v1/volumes/" + grade["book_id"] +
+                            requests.get("https://www.googleapis.com/books/v1/volumes?q=" + grade["book_id"] +
                             "&key=AIzaSyBtprivgL2dXOf8kxsMHuELzvOAQn-2ZZM").json()})
 
     # query database to get user's posts to show them to another user
