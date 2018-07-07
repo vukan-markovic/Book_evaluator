@@ -245,19 +245,18 @@ def bookDetails(book_id):
         averageGrade = gradesSum / len(grades)
     else:
         averageGrade = 0
-
-    # check if user already graded this book
+    
     graded = False
-
-    for grade in grades:
-        if grade["user_id"] == session["user_id"] and grade["book_id"] == book_id:
-            graded = True
-            break
-
-    # check if user already add this book to diary
     readed = False
     
+    # check if user already graded this book
     if session.get("user_id") != None:
+        for grade in grades:
+            if grade["user_id"] == session["user_id"] and grade["book_id"] == book_id:
+                graded = True
+                break
+
+        # check if user already add this book to diary
         for book in books:
             if book["book_id"] == book_id and book["user_id"] == session["user_id"]:
                 readed = True
