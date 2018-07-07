@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-sm-12">
         <br><h2 id="profile">Diary of readed books:</h2>
-          {% for book in books %}
+          {% for book in books["items"] %}
             <span class="badge badge-danger fontSize">
               <a title="See book details" href="{{ url_for('bookDetails', book_id = book.id) }}">{{ book.volumeInfo.title[:40] }}</a>
             </span>
