@@ -163,8 +163,8 @@ input[type]:focus {
   }
   
   .blogButton {
-    width: 10%;
-    height: 10%;
+    width: 40%;
+    height: 16%;
   }
 }
 
@@ -176,7 +176,7 @@ input[type]:focus {
   }
   
   .blogButton {
-    width: 10%;
-    height: 10%;
+    width: 40%;
+    height: 16%;
   }
 } 
