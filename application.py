@@ -256,11 +256,12 @@ def bookDetails(book_id):
 
     # check if user already add this book to diary
     readed = False
-
-    for book in books:
-        if book["book_id"] == book_id and book["user_id"] == session["user_id"]:
-            readed = True
-            break
+    
+    if session["user_id"]:
+        for book in books:
+            if book["book_id"] == book_id and book["user_id"] == session["user_id"]:
+                readed = True
+                break
 
     # get book from Google Books API that user choose from home page
     book = requests.get("https://www.googleapis.com/books/v1/volumes?q=" + book_id + "&key=AIzaSyBtprivgL2dXOf8kxsMHuELzvOAQn-2ZZM").json()
