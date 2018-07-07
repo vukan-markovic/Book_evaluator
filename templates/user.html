@@ -34,7 +34,7 @@
               <div class="card-header flex-item">
                 <span class="badge badge-success fontSize">
                   <a title="See book details" href="{{ url_for('bookDetails', book_id = comment.book.id) }}">
-                     {{ comment.book.volumeInfo.title }}
+                     {{ comment.book.volumeInfo.title[:40] }}
                   </a>
                 </span>
                 <div class="card-body flex-item">
