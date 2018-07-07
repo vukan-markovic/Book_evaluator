@@ -16,7 +16,7 @@
         <p class="card-text">{{ post.content }}</p>
       </div>
       <div class="card-body">
-        By:</span>{{ user.username }}
+        <a title="See profile" href="{{ url_for('user', username = user.username) }}">By: {{ user.username }}</a>
       </div>
       <div class="card-footer">
         Published: {{ post.dateOfPublish }}&nbsp;
