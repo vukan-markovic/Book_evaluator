@@ -115,14 +115,12 @@ input[type]:focus {
     font-size:8vw;   
 }
 
-.route:hover, .brand:hover, .btn:hover {
-    color: orange;
-}
-
 .formMargin {
   margin-top: 10%;
-  background-size: 100% 100%;
-  background-repeat: repeat-y;
+}
+
+.route:hover, .brand:hover, .btn:hover {
+    color: orange;
 }
 
 #book {
@@ -156,3 +154,19 @@ input[type]:focus {
 @-ms-viewport{
   width: device-width;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  body {
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
+  }
+} 
