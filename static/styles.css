@@ -161,6 +161,11 @@ input[type]:focus {
     background-size: 100% 100%;
     background-repeat: repeat-y;
   }
+  
+  .blogButton {
+    width: 10%;
+    height: 10%;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -168,5 +173,10 @@ input[type]:focus {
   body {
     background-size: 100% 100%;
     background-repeat: repeat-y;
+  }
+  
+  .blogButton {
+    width: 10%;
+    height: 10%;
   }
 } 
