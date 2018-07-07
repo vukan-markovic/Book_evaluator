@@ -257,7 +257,7 @@ def bookDetails(book_id):
     # check if user already add this book to diary
     readed = False
     
-    if session["user_id"]:
+    if session.get("user_id") != None:
         for book in books:
             if book["book_id"] == book_id and book["user_id"] == session["user_id"]:
                 readed = True
@@ -888,9 +888,10 @@ def user(username):
 
     # get all books from Google Books API that user read and add them to list
     for comment in comments:
-        usersComments.append({"id": comment["id"], "comment": comment["comment"], "dateOfPublish": comment["dateOfPublish"], "book":
-                              requests.get("https://www.googleapis.com/books/v1/volumes?q=" + comment["book_id"] +
-                              "&key=AIzaSyBtprivgL2dXOf8kxsMHuELzvOAQn-2ZZM").json()})
+        book = requests.get("https://www.googleapis.com/books/v1/volumes?q=" + comment["book_id"] +
+                            "&key=AIzaSyBtprivgL2dXOf8kxsMHuELzvOAQn-2ZZM").json()
+        usersComments.append({"id": comment["id"], "comment": comment["comment"], "dateOfPublish": comment["dateOfPublish"], 
+                              "book": book["items"][0]})
 
     # query database to get all user's grades to show them to another user
     grades = database.execute("SELECT * FROM grades WHERE user_id = :user_id", user_id = user[0]["id"])
@@ -900,9 +901,10 @@ def user(username):
 
     # get all books from Google Books API that user read and add them to list
     for grade in grades:
-        usersGrades.append({"id": grade["id"], "grade": grade["grade"], "dateOfEvaluation": grade["dateOfEvaluation"], "book":
-                            requests.get("https://www.googleapis.com/books/v1/volumes?q=" + grade["book_id"] +
-                            "&key=AIzaSyBtprivgL2dXOf8kxsMHuELzvOAQn-2ZZM").json()})
+        book = requests.get("https://www.googleapis.com/books/v1/volumes?q=" + grade["book_id"] +
+                            "&key=AIzaSyBtprivgL2dXOf8kxsMHuELzvOAQn-2ZZM").json()
+        usersGrades.append({"id": grade["id"], "grade": grade["grade"], "dateOfEvaluation": grade["dateOfEvaluation"], 
+                            "book": book["items"][0]})
 
     # query database to get user's posts to show them to another user
     posts = database.execute("SELECT * FROM posts WHERE user_id = :user_id", user_id = user[0]["id"])
