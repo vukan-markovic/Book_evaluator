@@ -37,7 +37,9 @@
             <a title="See post" href="{{ url_for('postDetails', post_id = post.id) }}">{{ post.title }}</a>
           </div>
           <div class="card-body flex-item">
-            <h4 class="card-title flex-item">By: {{ post.username }}</h4>
+            <a title="See profile" href="{{ url_for('user', username = post.username) }}"><h4 class="card-title flex-item">
+               By: {{ post.username }}</h4>
+            </a>
           </div>
         </div>
       {% endfor %}
