@@ -876,7 +876,8 @@ def user(username):
 
     # get all books from Google Books API that user read and add them to list
     for book in books:
-        readedBooks.append(requests.get("https://www.googleapis.com/books/v1/volumes?q=" + book["book_id"]).json())
+        readedBooks.append(requests.get("https://www.googleapis.com/books/v1/volumes?q=" + book["book_id"] + 
+                           "&key=AIzaSyBtprivgL2dXOf8kxsMHuELzvOAQn-2ZZM").json())
 
     # query database to get all user's comments to show them to another user
     comments = database.execute("SELECT * FROM comments WHERE user_id = :user_id", user_id = user[0]["id"])
