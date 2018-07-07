@@ -14,13 +14,13 @@
       <div class="col-sm-4">
         <p>Share your story with us! Publish a new post and take part at our blog!</p>
         {% if session.user_id %}
-          <button class="btn btn-primary btn-lg centerContent blogButton">
+          <button class="btn btn-primary btn-sm centerContent blogButton">
             <a title="Post" href="{{ url_for('publish') }}">Post</a>
           </button>
         {% endif %}
         {% if not session.user_id %}
           <p>Must be registered to take part at the blog and published!</p>
-          <button class="btn btn-primary btn-lg centerContent blogButton">
+          <button class="btn btn-primary btn-sm centerContent blogButton">
             <a title="Register" href="{{ url_for('register') }}">Register</a>
           </button>
         {% endif %}
