@@ -38,7 +38,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config["PERMANENT_SESSION_LIFETIME"] = 10800
 app.config["SESSION_COOKIE_HTTPONLY"] = False
 app.config["SESSION_COOKIE_SECURE"] = True
-app.config["SESSION_FILE_THRESHOLD"]= 2
+#app.config["SESSION_FILE_THRESHOLD"]= 2
 Session(app)
        
 # configure parameters for sending welcome email to users after registration
@@ -249,8 +249,10 @@ def bookDetails(book_id):
     graded = False
     readed = False
     
-    # check if user already graded this book
+    # if user is logged in
     if session.get("user_id") != None:
+        
+        # check if user already graded this book
         for grade in grades:
             if grade["user_id"] == session["user_id"] and grade["book_id"] == book_id:
                 graded = True
@@ -499,8 +501,8 @@ def updatePost(post_id):
             return apology("content")
 
         # query database for updating user's post
-        database.execute("UPDATE posts SET title = :title, content = :content, dateOfPublish = :dateOfPublish WHERE id = :id"
-                          , title = request.form.get("updatedTitle"), content = request.form.get("updatedContent"),
+        database.execute("UPDATE posts SET title = :title, content = :content, dateOfPublish = :dateOfPublish WHERE id = :id",
+                          title = request.form.get("updatedTitle"), content = request.form.get("updatedContent"),
                           dateOfPublish = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), id = post_id)
 
         # display flash message
