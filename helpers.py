@@ -30,7 +30,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-# Decorate route to check if user is login. Created to don't allow user to go to login or register page through URL if it is login.
+# decorate route to check if user is login. Created to don't allow user to go to login or register page through URL if it is login
 def logged(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
