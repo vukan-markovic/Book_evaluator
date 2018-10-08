@@ -1,7 +1,5 @@
 # Book evaluator :books:
 
-[Book evaluator site](https://book-evaluator.herokuapp.com)
-
 Web application for evaluating, commenting, reading and searching books with supported authentication.
 
 Short description of the application:
