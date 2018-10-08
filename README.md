@@ -1,8 +1,6 @@
 # Book evaluator :books:
 
-Link site: https://book-evaluator.herokuapp.com
-
-Code: https://github.com/Vukan-Markovic/Book-evaluator
+[Book evaluator site](https://book-evaluator.herokuapp.com)
 
 Web application for evaluating, commenting, reading and searching books with supported authentication.
 
@@ -15,15 +13,15 @@ Unregistered users can review books, comments, ratings, posts, profiles of other
 
 The site administrator has all the capabilities of the registered user and also the ability to delete and change the ratings and comments of all users as well as a review of all registered users with the possibility of their deletion.
 
-Books are delivered through the Google Books API (https://developers.google.com/books).
+Books are delivered through the [Google Books API](https://developers.google.com/books).
 
 Technologies:
 
-The following applications were used to create the application:
-- Flask web python framework (http://flask.pocoo.org)
-- CS50.io development environment (https://cs50.io)
-- SQLite database (https://www.sqlite.org/index.html)
-- host service for hosting (https://www.heroku.com)
+The following tools were used to create the application:
+- [Flask web python framework](http://flask.pocoo.org)
+- [CS50.io development environment](https://cs50.io)
+- [SQLite database](https://www.sqlite.org/index.html)
+- [Heroku service for hosting](https://www.heroku.com)
 
 Sources:
 - https://www.edx.org/course/cs50s-introduction-computer-science-harvardx-cs50x
