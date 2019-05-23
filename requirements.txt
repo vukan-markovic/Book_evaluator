@@ -29,7 +29,7 @@ pycparser==2.18
 pylint==1.9.2
 pyOpenSSL==18.0.0
 pytz==2018.4
-requests==2.19.1
+requests==2.20.0
 six==1.11.0
 SQLAlchemy==1.2.9
 sqlparse==0.2.4
